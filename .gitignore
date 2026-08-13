@@ -1,0 +1,12 @@
+.env
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+.vscode/
+.idea/
+.DS_Store
