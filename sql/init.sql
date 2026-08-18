@@ -15,7 +15,12 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS default.mv_parse_people
 TO default.people
 AS
 SELECT
-    JSONExtractString(arrayJoin(JSONExtractArrayRaw(raw_data, 'people')), 'craft') AS craft,
-    JSONExtractString(arrayJoin(JSONExtractArrayRaw(raw_data, 'people')), 'name') AS name,
+    JSONExtractString(person_json, 'craft') AS craft,
+    JSONExtractString(person_json, 'name') AS name,
     insert_time AS _inserted_at
-FROM default.raw_table;
+FROM (
+    SELECT
+        arrayJoin(JSONExtractArrayRaw(raw_data, 'people')) AS person_json,
+        insert_time
+    FROM default.raw_table
+);
