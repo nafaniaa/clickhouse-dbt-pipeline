@@ -1,4 +1,4 @@
-del_project:
+test_task_clickhouse:
   target: dev
   outputs:
     dev:

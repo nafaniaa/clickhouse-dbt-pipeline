@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: my_clickhouse_db   # Логическое имя источника для dbt
+    schema: default          
+    tables:
+      - name: people
