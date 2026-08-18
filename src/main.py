@@ -48,10 +48,6 @@ def load_to_clickhouse(json_data: str) -> None:
     client.insert('default.raw_table', [[json_data]], column_names=['raw_data'])
     print("Raw payload inserted into raw_table.")
 
-    # Force deduplication on target table (ReplacingMergeTree)
-    client.command('OPTIMIZE TABLE default.people FINAL')
-    print("Table default.people optimized successfully.")
-
 
 if __name__ == "__main__":
     try:
